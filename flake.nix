@@ -8,7 +8,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         devShell = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [ terraform ];
+          nativeBuildInputs = with pkgs; [ terraform_0_15 awscli2 ];
         };
       }
     );
