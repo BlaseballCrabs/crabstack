@@ -20,6 +20,8 @@ variable "region" {
 variable "workspace_iam_roles" {}
 
 provider "aws" {
-  region      = var.region
-  assume_role = var.workspace_iam_roles[terraform.workspace]
+  region = var.region
+  assume_role {
+    role_arn = var.workspace_iam_roles[terraform.workspace]
+  }
 }
