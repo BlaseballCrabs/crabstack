@@ -25,3 +25,8 @@ provider "aws" {
     role_arn = var.workspace_iam_roles[terraform.workspace]
   }
 }
+
+provider "aws" {
+  alias = "admin"
+  region = var.region
+}
