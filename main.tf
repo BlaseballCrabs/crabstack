@@ -17,11 +17,9 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "iam_role" {
-  type = string
-}
+variable "workspace_iam_roles" {}
 
 provider "aws" {
   region      = var.region
-  assume_role = var.iam_role
+  assume_role = var.workspace_iam_roles[terraform.workspace]
 }
