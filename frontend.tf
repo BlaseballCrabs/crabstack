@@ -7,17 +7,6 @@ resource "aws_s3_bucket" "frontend_bucket" {
   }
 }
 
-resource "aws_s3_bucket_object" "frontend_index" {
-  bucket        = aws_s3_bucket.frontend_bucket.id
-  key           = "index.html"
-  source        = "public/index.html"
-  content_type  = "text/html"
-  cache_control = "public, max-age=3600"
-  acl           = "public-read"
-
-  etag = filemd5("public/index.html")
-}
-
 resource "aws_cloudfront_distribution" "frontend_distribution" {
   origin {
     domain_name = aws_s3_bucket.frontend_bucket.bucket_regional_domain_name
